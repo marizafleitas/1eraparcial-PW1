@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Información del programa</title>
+    <!-- Estilos CSS -->
+    <style>
+        /* Estilos para el encabezado */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        /* Estilos generales del cuerpo */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.4;
+            text-align: justify; 
+            width: 210mm; /* Ancho de A4 */
+            height: 297mm; /* Alto de A4 */
+            margin: 0 auto; /* Centrar el contenido */
+            font-size: 12pt; /* Tamaño de la fuente */
+        }
+        /* Estilos para el título de la sección */
+        .section-title {
+            background-color: #f9f9f9;
+            color: #333;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+            font-weight: bold;
+            font-size: 18pt;
+            margin-bottom: 20px;
+        }
+        /* Estilos para las listas */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        /* Estilos para los elementos de la lista */
+        ul li {
+            padding: 3px 0;
+        }
+        /* Estilos para el texto fuerte dentro de la lista */
+        ul li strong {
+            color: #555;
+        }
+        /* Estilos para los párrafos */
+        p {
+            margin: 10px 0;
+            text-align: justify;
+        }
+        /* Estilos para el texto centrado */
+        .center-text {
+            text-align: center;
+            width: 100%;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        /* Estilos para el texto en mayúsculas */
+        .uppercase-text {
+            text-transform: uppercase;
+        }
+        /* Estilos para cada parrafo de section */
+        .section p {
+          text-align: justify;
+          white-space: pre-line;
+          line-height: 1.4;
+        }
+        /* Estilos específicos para impresión */
+        @media print {
+            .section {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado con logos y nombre de la facultad -->
+    <div class="header">
+        <!-- Logo a la izquierda -->
+       <!-- <img src="logo_izquierdo.png" alt="Logo izquierdo">-->
+        <!-- Información de la facultad en el centro -->
+        <div class="center-text">
+            <span style="font-size: 14px;">UNIVERSIDAD NACIONAL DE CAAGUAZU–UNC@</span><br>
+            Con sede en Coronel Oviedo<br>
+            <b>FACULTAD DE CIENCIAS Y TECNOLOGÍAS</b><br>
+            <span class="uppercase-text">CARRERA DE {{ pdf.carrera }}</span><br>
+            PLAN CURRICULAR 2010<br>
+            <b>PROGRAMA DE ESTUDIOS</b>
+        </div>
+        <!-- Logo a la derecha -->
+       <!-- <img src="logo_derecho.png" alt="Logo Derecho">-->
+    </div>
+
+    <!-- Secciones de información de la materia -->
+    <div class="section">
+        <!-- Sección de Identificación -->
+        <div class="section-title">I. IDENTIFICACIÓN</div>
+        <ul>
+            <li><strong>Nombre de la Materia:</strong> {{ pdf.materia }}</li>
+            <li><strong>Código:</strong> {{ pdf.codigo }}</li>
+            <li><strong>Condición:</strong> {{ pdf.condicion }}</li>
+            <li><strong>Carrera:</strong> {{ pdf.carrera }}</li>
+            <li><strong>Curso:</strong> {{ pdf.curso }}</li>
+            <li><strong>Semestre:</strong> {{ pdf.semestre }}</li>
+            <li><strong>Requisitos:</strong> {{ pdf.requisitos }}</li>
+            <li><strong>Carga horaria semanal:</strong> {{ pdf.carga_horaria_semanal }}</li>
+            <li><strong>Carga horaria semestral:</strong> {{ pdf.carga_horaria_semestral }}</li>
+            <li>OB: Obligatoria - OBC: Obligatoria Complementaria - OPT: Optativa</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <!-- Sección de Fundamentación -->
+        <div class="section-title">II. FUNDAMENTACIÓN</div>
+        <p>{{ pdf.fundamentacion }}</p>
+    </div>
+
+    <div class="section">
+        <!-- Sección de Objetivos -->
+        <div class="section-title">III. OBJETIVOS</div>
+        <p>{{ pdf.objetivos }}</p>
+    </div>
+
+    <div class="section">
+        <!-- Sección de Contenido -->
+        <div class="section-title">IV. CONTENIDO</div>
+        <p>{{ pdf.contenido }}</p>
+    </div>
+
+    <div class="section">
+        <!-- Sección de Metodología -->
+        <div class="section-title">V. METODOLOGÍA</div>
+        <p>{{ pdf.metodologia }}</p>
+    </div>
+
+    <div class="section">
+        <!-- Sección de Evaluación -->
+        <div class="section-title">VI. EVALUACIÓN</div>
+        <p>{{ pdf.evaluacion }}</p>
+    </div>
+
+    <div class="section">
+        <!-- Sección de Bibliografía -->
+        <div class="section-title">VII. BIBLIOGRAFÍA</div>
+        <p>{{ pdf.bibliografia }}</p>
+    </div>
+</body>
+</html>

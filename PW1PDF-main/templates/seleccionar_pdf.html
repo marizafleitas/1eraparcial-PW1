@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Seleccionar PDF por Carrera</title>
+</head>
+<body>
+    <!-- Formulario para seleccionar la carrera -->
+    <form method="POST" action="">
+        {% csrf_token %}
+        <label for="carrera">Seleccione una carrera:</label><br>
+         <!-- Etiqueta para la selección de carrera -->
+        <select name="carrera" id="carrera">
+              <!-- Selector de carrera -->
+            <option value="KTIC" {% if carrera_seleccionada == "KTIC" %}selected{% endif %}>Ingeniería Civil</option>
+            <option value="KTIE" {% if carrera_seleccionada == "KTIE" %}selected{% endif %}>Ingeniería en Electricidad</option>
+            <option value="KTIL" {% if carrera_seleccionada == "KTIL" %}selected{% endif %}>Ingeniería en Electrónica</option>
+            <option value="KTII" {% if carrera_seleccionada == "KTII" %}selected{% endif %}>Ingeniería en Informática</option>
+        </select>
+        <button type="submit">Ver programas disponibles</button>
+    </form>
+    <!-- Verificación y muestra de materias relacionadas -->
+    {% if carrera_seleccionada %}
+  
+    <h2>Materias disponibles:</h2>
+    <!-- Tabla para listar las materias -->
+    <table border="1">
+        <thead>
+            <!-- Encabezados de la tabla -->
+            <tr>
+                <th>Código</th>
+                <th>Nombre de la materia</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Ciclo para iterar sobre las materias -->
+            {% for materia in materias %}
+            <tr>
+                <td>{{ materia.codigo }}</td>
+                <td>{{ materia.materia }}</td>
+                <td>
+                    <!-- Formulario para ver/imprimir el PDF -->
+                    <form method="post" action="{% url 'mostrar-pdf' materia.codigo %}">
+                        {% csrf_token %}
+                        <button type="submit">Ver/Imprimir</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!-- Mensaje si no se ha seleccionado ninguna carrera -->
+    {% else %}  
+    {% endif %}
+</body>
+</html>
